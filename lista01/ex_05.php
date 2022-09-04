@@ -22,16 +22,22 @@
     <form method="get">
         <label>Nome do aluno:</label>
         <input name="nome" id="nome" type="text" value="<?= $nome ?>">
+        
         <label>Nota 01:</label>
         <input name="nota_1" id="nota_1" type="number" step=".25" value="<?= $nota_1 ?>">
+        
         <label>Nota 02:</label>
         <input name="nota_2" id="nota_2" type="number" step=".25" value="<?= $nota_2 ?>">
+        
         <label>Nota 03:</label>
         <input name="nota_3" id="nota_3" type="number" step=".25" value="<?= $nota_3 ?>">
+        
         <label>Nota 04:</label>
         <input name="nota_4" id="nota_4" type="number" step=".25" value="<?= $nota_4 ?>">
+        
         <input type="submit" value="Verificar aprovação do aluno">
-        <p>Resultado final: <?= $result ?></p>
     </form>
+
+    <p>Resultado final: <?= $result ?></p>
 </body>
 </html>

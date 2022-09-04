@@ -23,7 +23,8 @@
         <label>Digite um número:</label>
         <input name="valor" id="valor" type="number" value="<?= $valor ?>">
         <input type="submit" value="Verificar">
-        <p><?= $result ?></p>
     </form>
+
+    <p><?= $result ?></p>
 </body>
 </html>
