@@ -14,7 +14,7 @@
 
         $percentBrancos = $percentNulos = $percentValidos = '';
         if ($vtBrancos != '' && $vtNulos != '' && $vtValidos != '') {
-            $totalVotos = ($vtBrancos + $vtNulos + $vtValidos).'.';
+            $totalVotos = $vtBrancos + $vtNulos + $vtValidos;
             $percentBrancos = ($vtBrancos / $totalVotos * 100).'%';
             $percentNulos = ($vtNulos / $totalVotos * 100).'%';
             $percentValidos = ($vtValidos / $totalVotos * 100).'%';
