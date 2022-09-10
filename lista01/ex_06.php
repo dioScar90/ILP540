@@ -38,7 +38,24 @@
     <?php
         $peso = isset($_GET['peso']) ? $_GET['peso'] : '';
         $altura = isset($_GET['altura']) ? $_GET['altura'] : '';
-        $imc = $peso != '' && $altura != '' ? number_format(($peso / ($altura * 2)), 1, ',', '.') : '';
+        $imcAux = $peso != '' && $altura != '' ? $peso / ($altura * 2) : '';
+        $imc = $imcAux == '' ? '' : number_format($imcAux, 1, ',', '.');
+
+        $tr_01 = $tr_02 = $tr_03 = $tr_04 = $tr_05 = '';
+        $cor = " style='background-color:chartreuse;'";
+
+        if ($imcAux != '') {
+            if ($imcAux < 18.5)
+                $tr_01 = $cor;
+            else if ($imcAux >= 18.5 && $imcAux < 25)
+                $tr_02 = $cor;
+            else if ($imcAux >= 25 && $imcAux < 30)
+                $tr_03 = $cor;
+            else if ($imcAux >= 30 && $imcAux < 40)
+                $tr_04 = $cor;
+            else if ($imcAux >= 40)
+                $tr_05 = $cor;
+        }
     ?>
 
     <h1>Cálculo IMC</h1>
@@ -76,27 +93,27 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr <?= $tr_01 ?>>
                 <td>MENOR QUE 18,5</td>
                 <td>MAGREZA</td>
                 <td>0</td>
             </tr>
-            <tr>
+            <tr <?= $tr_02 ?>>
                 <td>ENTRE 18,5 E 24,9</td>
                 <td>NORMAL</td>
                 <td>0</td>
             </tr>
-            <tr>
+            <tr <?= $tr_03 ?>>
                 <td>ENTRE 25,0 E 29,9</td>
                 <td>SOBREPESO</td>
                 <td>I</td>
             </tr>
-            <tr>
+            <tr <?= $tr_04 ?>>
                 <td>ENTRE 30,0 E 39,9</td>
                 <td>OBESIDADE</td>
                 <td>II</td>
             </tr>
-            <tr>
+            <tr <?= $tr_05 ?>>
                 <td>MAIOR QUE 40,0</td>
                 <td>OBESIDADE GRAVE</td>
                 <td>III</td>
