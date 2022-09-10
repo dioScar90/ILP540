@@ -13,6 +13,7 @@
         $ltConsumidos = isset($_GET['ltConsumidos']) ? $_GET['ltConsumidos'] : '';
         $precoLitro = isset($_GET['precoLitro']) ? $_GET['precoLitro'] : '';
 
+        $distPercorrida = $totalGasto = $consumoCarro = '';
         if ($kmInicial != '' && $kmFinal != '' && $ltConsumidos != '' && $precoLitro != '') {
             $distPercorrida = ($kmFinal - $kmInicial).' km.';
             $totalGasto = 'R$ '.number_format(($ltConsumidos * $precoLitro), 2, ',', '.').'.';
@@ -28,7 +29,7 @@
         <input name="ltConsumidos" id="ltConsumidos" type="number" min="0" step=".001" value="<?= $ltConsumidos ?>">
         <label>Preço por litro:</label>
         <input name="precoLitro" id="precoLitro" type="number" min="0" step=".001" value="<?= $precoLitro ?>">
-        <input type="submit" value="Calcular troco">
+        <input type="submit" value="Calcular">
     </form>
 
     <p>Distância percorrida: <?= $distPercorrida ?></p>

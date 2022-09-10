@@ -8,18 +8,30 @@
 </head>
 <body>
     <?php
-        $preco = isset($_GET['preco']) ? $_GET['preco'] : '';
-        $qtde = isset($_GET['qtde']) ? $_GET['qtde'] : '';
-        $total = $preco != '' && $qtde != '' ? 'R$ '.number_format(($qtde * $preco), 2, ',', '.') : '---';
+        $vtBrancos = isset($_GET['vtBrancos']) ? $_GET['vtBrancos'] : '';
+        $vtNulos = isset($_GET['vtNulos']) ? $_GET['vtNulos'] : '';
+        $vtValidos = isset($_GET['vtValidos']) ? $_GET['vtValidos'] : '';
+
+        $percentBrancos = $percentNulos = $percentValidos = '';
+        if ($vtBrancos != '' && $vtNulos != '' && $vtValidos != '') {
+            $totalVotos = ($vtBrancos + $vtNulos + $vtValidos).'.';
+            $percentBrancos = ($vtBrancos / $totalVotos * 100).'%';
+            $percentNulos = ($vtNulos / $totalVotos * 100).'%';
+            $percentValidos = ($vtValidos / $totalVotos * 100).'%';
+            $percentuais = "$percentBrancos de votos brancos, $percentNulos de votos nulos e $percentValidos de votos válidos.";
+        }
     ?>
     <form method="get">
-        <label>Preço (por kg):</label>
-        <input name="preco" id="preco" type="number" min="0" step=".01" value="<?= $preco ?>">
-        <label>Total consumido (em kg):</label>
-        <input name="qtde" id="qtde" type="number" min="0" step=".001" value="<?= $qtde ?>">
-        <input type="submit" value="Calcular preço final">
+        <label>Votos brancos:</label>
+        <input name="vtBrancos" id="vtBrancos" type="number" min="0" step="1" value="<?= $vtBrancos ?>">
+        <label>Votos nulos:</label>
+        <input name="vtNulos" id="vtNulos" type="number" min="0" step="1" value="<?= $vtNulos ?>">
+        <label>Votos válidos:</label>
+        <input name="vtValidos" id="vtValidos" type="number" min="0" step="1" value="<?= $vtValidos ?>">
+        <input type="submit" value="Calcular votos">
     </form>
 
-    <p>Total a pagar: <?= $total ?>.</p>
+    <p>Total de eleitores que votaram: <?= $totalVotos ?></p>
+    <p>Percentuais: <?= $percentuais ?></p>
 </body>
 </html>
