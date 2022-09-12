@@ -15,7 +15,7 @@
             echo "<p>";
             for ($i = 1; $i <= 10; $i++) {
                 $prod = $fat * $i;
-                echo ($i == 1 ? "" : "<br>")."$fat x $i = $prod";
+                echo ($i == 1 ? "" : "<br>")."$fat x $i = ".number_format($prod, 0, ',', '.');
             }
             echo "</p>";
         }

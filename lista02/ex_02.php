@@ -12,12 +12,12 @@
         $vtNulos = isset($_GET['vtNulos']) ? $_GET['vtNulos'] : '';
         $vtValidos = isset($_GET['vtValidos']) ? $_GET['vtValidos'] : '';
 
-        $percentBrancos = $percentNulos = $percentValidos = '';
+        $percentBrancos = $percentNulos = $percentValidos = $totalVotos = $percentuais = '';
         if ($vtBrancos != '' && $vtNulos != '' && $vtValidos != '') {
             $totalVotos = $vtBrancos + $vtNulos + $vtValidos;
-            $percentBrancos = ($vtBrancos / $totalVotos * 100).'%';
-            $percentNulos = ($vtNulos / $totalVotos * 100).'%';
-            $percentValidos = ($vtValidos / $totalVotos * 100).'%';
+            $percentBrancos = number_format(($vtBrancos / $totalVotos * 100), 2).'%';
+            $percentNulos = number_format(($vtNulos / $totalVotos * 100), 2).'%';
+            $percentValidos = number_format(($vtValidos / $totalVotos * 100), 2).'%';
             $percentuais = "$percentBrancos de votos brancos, $percentNulos de votos nulos e $percentValidos de votos válidos.";
         }
     ?>

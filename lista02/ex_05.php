@@ -10,28 +10,28 @@
     <?php
         $numero = isset($_GET['numero']) ? $_GET['numero'] : '';
         $inteiro = $par = $positivo = false;
+        $msg = '';
         if (isset($_GET['numero'])) {
             $inteiro = $numero == (int)$numero ? true : false;
             $par = $numero % 2 == 0 ? true : false;
             $positivo = $numero >= 0 ? true : false;
-
-            $msg = '';
+            
             if ($inteiro == true) {
                 if ($par == true && $positivo == true) {
-                    $msg = 'O número informado é par e positivo.';
+                    $msg = "O número $numero é par e positivo.";
                 }
                 else if ($par == true && $positivo == false) {
-                    $msg = 'O número informado é par e negativo.';
+                    $msg = "O número $numero é par e negativo.";
                 }
                 else if ($par == false && $positivo == true) {
-                    $msg = 'O número informado é ímpar e positivo.';
+                    $msg = "O número $numero é ímpar e positivo.";
                 }
                 else {
-                    $msg = 'O número informado é ímpar e negativo.';
+                    $msg = "O número $numero é ímpar e negativo.";
                 }
             }
             else {
-                $msg = 'Não foi informado um número inteiro.';
+                $msg = "Não foi informado um número inteiro.";
             }
         }
     ?>

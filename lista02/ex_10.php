@@ -25,7 +25,7 @@
     <p>
     <?php
         foreach($fib as $key => $item) {
-            echo (reset($fib) == $item) ? $item : ', '.$item;
+            echo (reset($fib) == $item) ? number_format($item, 0, ',', '.') : ', '.number_format($item, 0, ',', '.');
             echo (end($fib) == $item) ? '.' : '';
         }
     ?>
