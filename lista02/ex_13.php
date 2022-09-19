@@ -8,16 +8,22 @@
 </head>
 <body>
     <?php
-        $qtde = isset($_GET['qtde']) ? $_GET['qtde'] : "";
+        $qtde = isset($_GET['qtde']) ? $_GET['qtde'] : "0";
+        $outrosGets = false;
+        for ($i = 0, $j = 1; $i < $qtde; $i++, $j++) {
+            $aux = "num".$j;
+            $outrosGets = isset($_GET[$aux]) ? true : false;
+        }
 
         $numbers = array();
         $soma = $media = $maior = $maiorIdx = $menor = $menorIdx = 0;
         $elementos = '';
         $display = "style='display:none;'";
-        if (isset($_GET['qtde']) && $qtde > 0) {
-            for ($i = 0; $i < $qtde; $i++) {
-                $aux = rand(1,2000);
-                array_push($numbers, $aux);
+        if (isset($_GET['qtde']) && $qtde > 0 && $outrosGets == true) {
+            for ($i = 0, $j = 1; $i < $qtde; $i++, $j++) {
+                $aux = "num".$j;
+                $num = $_GET[$aux];
+                array_push($numbers, $num);
             }
 
             foreach ($numbers as $key => $item) {
@@ -42,11 +48,27 @@
         }
     ?>
     <form method="get">
-        <label>Informe a quantidade de números inteiros:</label>
+        <label>Quantos números deseja incluir?</label>
         <input name="qtde" type="number" min="1" step="1" value="<?= $qtde ?>">
 
-        <input type="submit" value="Começar">
+        <input type="submit" value="Ok">
     </form>
+
+    
+    <?php
+        if (!empty($qtde)) {
+            echo "<form method='get'>";
+            echo "<input name='qtde' type='hidden' value='$qtde'>";
+            $numeros = array();
+            for ($i = 0, $j = 1; $i < $qtde; $i++, $j++) {
+                echo "<label>".$j."º número:</label>";
+                echo "<input name='num".$j."' type='number' min='1' step='1' value='".(!empty($numbers) ? $numbers[$i] : '')."'>";
+            }
+            echo "<input type='submit' value='Incluir'>";
+            echo "</form>";
+        }
+    ?>
+    
 
     <div <?= $display ?>>
         <p>Elementos: <?= $elementos ?>.</p>
