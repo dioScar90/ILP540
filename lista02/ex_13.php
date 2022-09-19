@@ -27,7 +27,7 @@
             }
 
             foreach ($numbers as $key => $item) {
-                $elementos .= reset($numbers) == number_format($item, 0, ',', '.') ? $item : ', '.number_format($item, 0, ',', '.');
+                $elementos .= reset($numbers) == $item ? number_format($item, 0, ',', '.') : ', '.number_format($item, 0, ',', '.');
 
                 $soma += $item;
 
@@ -43,12 +43,15 @@
                     $menor = $item < $menor ? $item : $menor;
                 }
             }
+
+            $maiorIdx++;
+            $menorIdx++;
             $media = $soma / $qtde;
             $display = "style='display:block;'";
         }
     ?>
     <form method="get">
-        <label>Quantos números deseja incluir?</label>
+        <label>Quantos números deseja incluir?</label><br>
         <input name="qtde" type="number" min="1" step="1" value="<?= $qtde ?>">
 
         <input type="submit" value="Ok">
@@ -62,7 +65,7 @@
             $numeros = array();
             for ($i = 0, $j = 1; $i < $qtde; $i++, $j++) {
                 echo "<label>".$j."º número:</label>";
-                echo "<input name='num".$j."' type='number' min='1' step='1' value='".(!empty($numbers) ? $numbers[$i] : '')."'>";
+                echo "<input name='num".$j."' type='number' min='1' step='1' value='".(!empty($numbers) ? $numbers[$i] : '')."'><br>";
             }
             echo "<input type='submit' value='Incluir'>";
             echo "</form>";
@@ -74,8 +77,8 @@
         <p>Elementos: <?= $elementos ?>.</p>
         <p>Soma dos números: <?= number_format($soma, 0, ',', '.') ?>.</p>
         <p>Média dos números: <?= number_format($media, 0, ',', '.') ?>.</p>
-        <p>Maior: <?= number_format($maior, 0, ',', '.') ?>, posição <?= $maiorIdx ?>.</p>
-        <p>Menor: <?= number_format($menor, 0, ',', '.') ?>, posição <?= $menorIdx ?>.</p>
+        <p>Maior: <?= number_format($maior, 0, ',', '.') ?> – <?= $maiorIdx ?>º número.</p>
+        <p>Menor: <?= number_format($menor, 0, ',', '.') ?> – <?= $menorIdx ?>º número.</p>
     </div>
 </body>
 </html>
