@@ -23,6 +23,10 @@
         }
         echo '<br>';
         echo "Nome: $nome - Email: $email";
+
+        $file = fopen("webdictionary.txt", "r") or die("Falha na abertura do arquivo.");
+        echo fread($file, filesize("webdictionary.txt"));
+        fclose($file);
     ?>
 </body>
 </html>
