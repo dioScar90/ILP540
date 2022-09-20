@@ -8,33 +8,29 @@
 </head>
 <body>
     <?php
-        $texto = isset($_GET['texto']) ? $_GET['texto'] : '';
-        $palavra = isset($_GET['palavra']) ? $_GET['palavra'] : '';
+        $texto = isset($_GET['texto']) ? UTF8_decode($_GET['texto']) : '';
+        $textoParaEditar = strtolower($texto);
+        $palavra = isset($_GET['palavra']) ? strtolower($_GET['palavra']) : '';
 
         $display = "style='display:none;'";
-        $arrLetras = $arrLetUniq = array();
+        $posInicial = $posFinal = $letras = "...";
+        $arrLetras = $arrLetUniq = $arrPalavras = array();
         if (isset($_GET['texto'], $_GET['palavra'])) {
-            $pos = strpos($texto, $palavra);
-            if ($pos != false) {
-                $palavraStart = $pos;
-                $palavraEnd = $pos + strlen($palavra);
-                $letras = strlen($texto);
-                $arrPalavras = preg_split("/[\s,.;:_!?]+/", $texto);
-                $textoSemEspeciais = preg_replace("/[\s,.;:_!?]+/", '', $texto);
-
-                for ($i = 0; $i < strlen($textoSemEspeciais); $i++) {
-                    if ($textoSemEspeciais[$i] != "/[\s,.;:_!?]+/") {
-                        array_push($arrLetras, $textoSemEspeciais[$i]);
-                    }
-                }
+            $posicaoDaPalavra = strpos($textoParaEditar, $palavra);
+            if ($posicaoDaPalavra != false) {
+                $posInicial = $posicaoDaPalavra;
+                $posFinal = $posicaoDaPalavra + strlen($palavra);
+                $textoSemEspaços = str_replace(" ", "", trim($textoParaEditar));
+                $letras = strlen($textoSemEspaços);
+                $arrPalavras = explode(" ", $textoParaEditar);
+                
+                $arrLetras = str_split($textoSemEspaços);
 
                 $arrLetUniq = array_unique($arrLetras);
                 foreach ($arrLetUniq as $key => $item) {
                     count(array_keys($arrLetras, $item));
                 }
             }
-
-            $display = "style='display:block;'";
         }
     ?>
     <form method="get">
@@ -46,24 +42,21 @@
 
         <input type="submit" value="Começar">
     </form>
-
-    <div <?= $display ?>>
-        <p>Texto: <strong><?= $texto ?></strong>.</p>
-        <p>A palavra <strong><?= $palavra ?></strong> começa na posição <?= $palavraStart ?> e termina na posição <?= $palavraEnd ?>.</p>
-        <p>O texto possui <?= $letras ?> letras (considerando os espaços, pontuações e caracteres especiais) e <?= sizeof($arrPalavras) ?> palavras.</p>
-        <h4>Letras e ocorrência delas no texto:</h4>
-        <?php
-            if (isset($_GET['texto'], $_GET['palavra'])) {
-                echo "<p>";
-                foreach ($arrLetUniq as $key => $item) {
-                    echo reset($arrLetUniq) == $item ? "" : "<br>";
-                    $qtdeLetras = count(array_keys($arrLetras, $item));
-                    $quantasVezes = $qtdeLetras > 1 ? "$qtdeLetras vezes" : "$qtdeLetras vez";
-                    echo "Letra <strong>$item</strong> aparece $quantasVezes.";
-                }
-                echo "</p>";
+    
+    <p>Texto: <strong><?= $texto ?></strong>.</p>
+    <p>A palavra <strong><?= $palavra ?></strong> começa na posição <?= $posInicial ?> e termina na posição <?= $posFinal ?>.</p>
+    <p>O texto possui <?= $letras ?> letras (desconsiderando os espaços) e <?php echo !empty($arrPalavras) ? sizeof($arrPalavras) : "..."; ?> palavras.</p>
+    <h4>Letras e ocorrência delas no texto:</h4>
+    <?php
+        if (isset($_GET['texto'], $_GET['palavra'])) {
+            echo "<p>";
+            foreach ($arrLetUniq as $key => $item) {
+                echo reset($arrLetUniq) == $item ? "" : "<br>";
+                $qtdeLetras = count(array_keys($arrLetras, $item));
+                echo "Letra <strong>$item</strong> aparece $qtdeLetras vez(es).";
             }
-        ?>
-    </div>
+            echo "</p>";
+        }
+    ?>
 </body>
 </html>
