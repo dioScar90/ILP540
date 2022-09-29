@@ -15,7 +15,23 @@
         if (isset($_GET['time1'], $_GET['time2'], $_GET['time3'], $_GET['time4'], $_GET['time5'])) {
             $submitOk = true;
             for ($i = 0, $j = 1; $i < sizeof($times); $i++, $j++) {
-                $times[$i] = ucfirst(mb_strtolower($_GET["time$j"]));
+                $itemToPush = '';
+                $strAux = trim($_GET["time$j"]);
+
+                // Deixa as strings com a 1ª letra maiúscula.
+                if (strpos($strAux, ' ')) {
+                    $strArr = explode(' ', $strAux);
+                    $strAux = '';
+                    foreach ($strArr as $item) {
+                        $strAux .= reset($strArr) == $item ? ucfirst(mb_strtolower($item)) : ' '.ucfirst(mb_strtolower($item));
+                    }
+                    $itemToPush = $strAux;
+                }
+                else {
+                    $itemToPush = ucfirst(mb_strtolower($strAux));
+                }
+
+                $times[$i] = $itemToPush;
             }
 
             $fileName = "times.txt";
