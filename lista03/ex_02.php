@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php
-        $times = array('', '', '', '', '');
+        $times = array_fill(0, 5, '');
         $content = '';
         $submitOk = false;
         
@@ -26,9 +26,6 @@
                 $content .= $i > 0 ? "\n" : "";
                 $content .= $times[$i];
             }
-
-            if(!empty($file))
-                echo "<p> Arquivo ($fileName) gerado com sucesso. </p>";
 
             fwrite($file, $content);
             fclose($file);
