@@ -16,7 +16,7 @@
 
         /**
          * Aqui substituí todos os caracteres acentuados pois estava dando conflito no for(), estava trazendo
-         * um  caractere � sempre que aparecia alguma letra acentuada. Provavelmente algum problema de UTF-8
+         * um caractere � sempre que aparecia alguma letra acentuada. Provavelmente algum problema de UTF-8
          * mas não consegui resolver de forma nativa, então fiz essa POG.
          */
         $comAcentos = array('à', 'á', 'â', 'ã', 'ä', 'å', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î',
@@ -53,6 +53,7 @@
             $display = "style='display:block;'";
         }
     ?>
+    
     <form method="get">
         <label>Informe um texto:</label>
         <input name="texto" type="text" value="<?= $texto ?>">
