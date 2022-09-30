@@ -14,7 +14,7 @@
 
         $content = "Palmeiras – tricampeão da Libertadores (1999, 2020, 2021)."
                     ."\nPalmeiras – tetracampeão da Copa do Brasil (1998, 2012, 2015, 2020)."
-                    ."\nPalmeiras - eneacampeão brasileiro (1960, 1967[0], 1967[1], 1969, 1972, 1973, 1993, 1994, 2016, 2018, 2022).";
+                    ."\nPalmeiras – hendecacampeão brasileiro (1960, 1967[0], 1967[1], 1969, 1972, 1973, 1993, 1994, 2016, 2018, 2022).";
         if(!empty($file))
             echo "<p> Arquivo ($fileName) gerado com sucesso. </p>";
 
