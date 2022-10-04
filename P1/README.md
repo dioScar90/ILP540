@@ -1,4 +1,4 @@
-## Atividadepara composição de notada P1
+## Atividade para composição de notada P1
 
 ### Atividade PHP–Valor: 4 pontos
 
