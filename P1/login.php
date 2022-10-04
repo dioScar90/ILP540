@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>DIOGO P1 – Login</title>
+    <title> DIOGO P1 – Login </title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
@@ -21,7 +21,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
                     </div>
-                    <input type="text" id="tx_login" name="tx_login" class="form-control" placeholder="Usuário" required autofocus="">
+                    <input type="text" id="tx_login" name="tx_login" class="form-control" placeholder="Usuário" required>
                 </div>
                 
                 <div class="input-group">
@@ -29,7 +29,7 @@
                         <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                     </div>
                     <input id="tx_senha" type="password" class="form-control" name="tx_senha" placeholder="Senha" required>
-                    <div id="div-eye" onclick="show()" class="input-group-append">
+                    <div id="div-eye" class="input-group-append">
                         <span class="input-group-text"><i id="eye" class="fas fa-eye"></i></span>
                     </div>
                 </div>
