@@ -1,6 +1,6 @@
-### Atividadepara composição de notada P1
+## Atividadepara composição de notada P1
 
-## Atividade PHP–Valor: 4 pontos
+### Atividade PHP–Valor: 4 pontos
 
 Crie um projeto em PHP, utilizando HTML5, CSS e Bootstrap, que simule uma área administrativa para um cadastro de compromissos pessoais.
 
