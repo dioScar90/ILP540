@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -11,8 +11,21 @@
 </head>
 <body>
     <main>
-        <div class="container" style="max-width: 400px;">
-            <form class="form-signin" id="logar" name="logar" method="POST" style="flex-grow:1;flex-shrink:1;">
+        <div class="container" style="max-width: 400px;"> -->
+            <form action="" method="post" style="text-align: center;">
+                <input type="text" placeholder="Login" name="login" id="login">
+                <input type="password" placeholder="Senha" name="senha" id="senha">
+                <input type="submit" name="acao" value="Enviar!">
+            </form>
+
+
+
+
+
+
+
+
+            <!-- <form class="form-signin" id="logar" name="logar" method="POST" style="flex-grow:1;flex-shrink:1;">
                 <img name="gif" id="gif" src="assets/img/login.png" class="img-responsive" alt="">
                 
                 <hr>
@@ -35,8 +48,8 @@
                 </div>
                 
                 <input type="submit" id="bt_entrar" name="bt_entrar" value="Acessar" class="btn btn-lg btn-primary btn-block">
-            </form>
-        </div>
+            </form> -->
+        <!-- </div>
     </main>
 </body>
 <script src="https://kit.fontawesome.com/c5b43aab05.js" crossorigin="anonymous"></script>
@@ -44,4 +57,4 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script src="assets/script/login.js"></script>
-</html>
+</html> -->
