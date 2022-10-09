@@ -1,0 +1,14 @@
+
+*** These modified files were found in JOE when it aborted on Tue Oct  4 06:56:16 2022
+*** JOE was aborted by UNIX signal 1
+
+*** File '(Unnamed)'
+/opt/lampp/htdocs/ILP540/.git/MERGE_MSG
+/home/diogo/Documents/NodeJS/.git/MERGE_MSG
+/opt/lampp/htdocs/ILP540/.git/MERGE_MSG
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc
