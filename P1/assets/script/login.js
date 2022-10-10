@@ -1,4 +1,5 @@
 $('#div-eye').on('click', () => {
+    console.log('Clicou');
     let input = document.getElementById('tx_senha');
     let olho = document.getElementById('eye');
     if (input.type === 'text') {

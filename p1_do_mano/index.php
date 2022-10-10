@@ -6,9 +6,9 @@ if (isset($_SESSION["adm_login"])) {
     header("Location: home.php");
 }
 
-if ($_POST) {
-    $login = isset($_POST["login"]) ? $_POST["login"] : '';
-    $senha = isset($_POST["senha"]) ? $_POST["senha"] : '';
+if (isset($_POST["login"], $_POST["senha"])) {
+    $login = $_POST["login"];
+    $senha = $_POST["senha"];
 
     $csv = array_map('str_getcsv', file('users.csv'));
     foreach ($csv as $row) {
@@ -26,7 +26,7 @@ if ($_POST) {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">

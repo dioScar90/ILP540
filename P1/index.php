@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-<?php include_once "header.php" ?>
-
-
-<div class="container">
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</div>
-
-
-<?php include_once "footer.php" ?>
-=======
 <?php
     if (!isset($_SESSION)) {
         session_start();
@@ -27,7 +6,7 @@
     include_once "menu.php";
 ?>
 
-<div class="container">
+<div class="container" style="min-height: 100%; display: flex; flex-direction: column">
     <?php
         if (!isset($_SESSION['login'])) {
             if (isset($_POST['acao'])) {
@@ -63,4 +42,3 @@
 <?php
     include_once "footer.php";
 ?>
->>>>>>> d90ab7c62170cec67ef7d20316075d3b49b0ce8a
