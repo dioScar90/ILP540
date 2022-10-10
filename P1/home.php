@@ -15,12 +15,14 @@
     <?php
         $usuarioLogado = $_SESSION['login'] ?? '';
         $arquivo = is_file("compromissos.json") ? file_get_contents("compromissos.json") : "[]";
-        $arrCompromissos = json_decode($arquivo);
+        $arrCompromissos = !empty($arquivo) ? json_decode($arquivo) : array();
 
         // Ordena a tabela de acordo com data_hora.
-        usort($arrCompromissos, function($a, $b) {
-            return $a->data_hora > $b->data_hora;
-        });        
+        if (!is_null($arrCompromissos) && count($arrCompromissos) > 0) {
+            usort($arrCompromissos, function($a, $b) {
+                return $a->data_hora > $b->data_hora;
+            });
+        }
     ?>
 
     <div class="row">
@@ -32,7 +34,7 @@
         </div>
     </div>
     
-    <p> Olá, <?= ucfirst($usuarioLogado) ?>. Cadastre aqui seus compromissos. </p>
+    <p> Olá, <strong><?= ucfirst($usuarioLogado) ?></strong>. Cadastre aqui seus compromissos. </p>
 
     <?php
         if (empty($arrCompromissos)) {

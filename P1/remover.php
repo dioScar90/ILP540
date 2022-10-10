@@ -9,32 +9,28 @@
 
     include_once "header.php";
     include_once "menu.php";
-
-    // $usuarioLogado = $_SESSION["login"];
-    // $local = $_GET["local"] ?? "";
-    // $datahora = $_GET["datahora"] ?? "";
-    // $compromisso = $_GET["compromisso"] ?? "";
+    
     $idParaRemover = $_GET["id"] ?? 0;
 
     $arquivo = is_file("compromissos.json") ? file_get_contents("compromissos.json") : "[]";
-    $arrCompromissos = json_decode($arquivo);
-
-    for ($i = 0; $i < sizeof($arrCompromissos); $i++) {
-        $linha = $arrCompromissos[$i];
-        if ($idParaRemover == $linha->id) {
-            unset($arrCompromissos[$i]);
+    $arrCompromissos = !empty($arquivo) ? json_decode($arquivo) : array();
+    
+    if (count($arrCompromissos) > 0) {
+        for ($i = 0; $i < count($arrCompromissos); $i++) {
+            if ($idParaRemover == $arrCompromissos[$i]->id) {
+                unset($arrCompromissos[$i]);
+            }
         }
     }
+
+    // Reorganiza os index pois estava dando erro no json_encode.
+    $arrCompromissos = array_values($arrCompromissos);
+    
     $file = fopen("compromissos.json", "w");
-    fwrite($file, json_encode($arrCompromissos));
-
-
+    $arrEncode = json_encode($arrCompromissos, false);
+    fwrite($file, $arrEncode);
+    
     header("Location: home.php");
+    
+    include_once "footer.php";
 ?>
-    
-    
-</div>
-
-    <?php
-        include_once "footer.php";
-    ?>
