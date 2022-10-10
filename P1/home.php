@@ -2,12 +2,10 @@
     if (!isset($_SESSION)) {
         session_start();
     }
-
-    // echo $_SESSION["login"];
     
-    // if (!isset($_SESSION["login"])) {
-    //     header("Location: index.php");
-    // }
+    if (!isset($_SESSION["login"])) {
+        header("Location: index.php");
+    }
 
     include_once "header.php";
     include_once "menu.php";
@@ -18,6 +16,11 @@
         $usuarioLogado = $_SESSION['login'] ?? '';
         $arquivo = is_file("compromissos.json") ? file_get_contents("compromissos.json") : "[]";
         $arrCompromissos = json_decode($arquivo);
+
+        // Ordena a tabela de acordo com data_hora.
+        usort($arrCompromissos, function($a, $b) {
+            return $a->data_hora > $b->data_hora;
+        });        
     ?>
 
     <div class="row">
@@ -76,9 +79,9 @@
                             </td>
 
                             <td class="text-center"> 
-                                <a href="remover.php?id=<?= $item->id ?>" class="btn btn-danger">
+                                <a href="remover.php?id=<?= $item->id ?>">
                                     <button type="submit" class="btn btn-danger" value="<?= $item->id ?>">
-                                        <span class="fas fa-trash-alt"></span>
+                                        <span class="fas fa-trash-alt"></span>&nbsp;Remover
                                     </button>                                  
                                 </a>
                             </td>

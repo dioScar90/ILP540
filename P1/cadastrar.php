@@ -12,8 +12,9 @@
 
     if(isset($_POST["local"], $_POST["datahora"], $_POST["compromisso"])){
         $local = $_POST["local"];
-        $datahora = date("d/m/Y H:i:s", strtotime($_POST["datahora"]));
+        $datahora = $_POST["datahora"];
         $compromisso = $_POST["compromisso"];
+        $usuarioLogado = $_SESSION["login"] ?? null;
     
         $arquivo = is_file("compromissos.json") ? file_get_contents("compromissos.json") : "[]";
         $arrCompromissos = json_decode($arquivo);
@@ -21,7 +22,7 @@
     
         array_push($arrCompromissos, array(
             "id" => $lastId + 1,
-            "user" => $_SESSION["login"],
+            "user" => $usuarioLogado,
             "compromisso" => $compromisso,
             "local" => $local,
             "data_hora" => $datahora,
