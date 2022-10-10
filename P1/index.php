@@ -32,7 +32,7 @@
                 session_destroy();
                 header("Location: index.php");
             }
-            // include('home.php');
+            
             header("Location: home.php");
         }
     ?>

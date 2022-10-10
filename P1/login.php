@@ -6,7 +6,6 @@
         <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-user"></i></span>
         </div>
-        <!--style="text-transform:lowercase"-->
         <input type="text"  id="login" name="login" class="form-control" placeholder="Usuário" required autofocus>
     </div>
     <div class="input-group">

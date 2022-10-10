@@ -38,6 +38,7 @@
         <div class="col-md-6">
             <h1>Cadastrar compromissos</h1>
         </div>
+
         <div class="col-md-6" style="text-align:right;">
             <a href="home.php" class="btn btn-primary">Voltar</a>
         </div>
@@ -51,19 +52,11 @@
         </form>
 
         <?php
-        
-        if(isset($msgAposCadastro)) {
-            echo $msgAposCadastro;
-        }
-        
+            echo isset($msgAposCadastro) ? $msgAposCadastro : "";
         ?>
-
-
     </div>
-    
-    
 </div>
 
-    <?php
-        include_once "footer.php";
-    ?>
+<?php
+    include_once "footer.php";
+?>
