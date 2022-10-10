@@ -2,6 +2,13 @@
     if (!isset($_SESSION)) {
         session_start();
     }
+
+    // echo $_SESSION["login"];
+    
+    // if (!isset($_SESSION["login"])) {
+    //     header("Location: index.php");
+    // }
+
     include_once "header.php";
     include_once "menu.php";
 ?>
@@ -46,8 +53,9 @@
                     <thead class="table-head-color">
                         <tr class="text-white">
                             <th scope="col" class="text-center">Data / Hora</th>
-                            <th scope="col" class="text-center">Descrição</th>
-                            <th scope="col" class="text-center">Local</th>
+                            <th scope="col" class="text-right">Descrição</th>
+                            <th scope="col" class="text-right">Local</th>
+                            <th scope="col" class="text-center">Remover</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,7 +63,7 @@
             foreach ($arrCompromissos as $item) {
     ?>
                         <tr>
-                            <th scope="row">
+                            <th scope="row" class="text-center">
                                 <?= date("d/m/Y H:m", strtotime($item->data_hora)); ?>
                             </th>
                             
@@ -64,15 +72,13 @@
                             </td>
                             
                             <td>
-                                <?php
-                                    echo $item->local;
-                                ?>
+                                <?= ucwords($item->local); ?>
                             </td>
 
-                            <td> 
-                                <a href="remover.php?compromisso=<?=$item->compromisso?>&local=<?=$item->local?>&datahora=<?=$item->data_hora?>" class="btn btn-danger">
-                                    <button type="submit" class="btn btn-danger" value="<?php echo $item->it_cod; ?>">
-                                        <span class="fas fa-trash-alt"></span> Remover
+                            <td class="text-center"> 
+                                <a href="remover.php?id=<?= $item->id ?>" class="btn btn-danger">
+                                    <button type="submit" class="btn btn-danger" value="<?= $item->id ?>">
+                                        <span class="fas fa-trash-alt"></span>
                                     </button>                                  
                                 </a>
                             </td>
