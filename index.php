@@ -1,32 +1,41 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Principal – aula ILP540</title>
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
     <?php
-        $foo = 'Bob';
-        $bar = &$foo;
-        $bar = "My name is $bar";
-        echo $bar;
-        echo '<br>';
-        echo $foo;
-        echo '<br>';
-        var_dump($foo);
-        
-        if (isset($_GET['username']) && isset($_GET['email'])) {
-            $nome = $_GET['username'];
-            $email = $_GET['email'];
-            echo '<br>';
-            echo "Nome: $nome - Email: $email";
+        class Fruit {
+            private $name;
+            private $color;
+
+            function getName() {
+                return $this->name;
+            }
+
+            function setName($name) {
+                $this->name = $name;
+            }
+
+            function getColor() {
+                return $this->color;
+            }
+
+            function setColor($color) {
+                $this->color = $color;
+            }
         }
-        
-        $file = fopen("webdictionary.txt", "r") or die("Falha na abertura do arquivo.");
-        echo "<pre>".fread($file, filesize("webdictionary.txt"))."</pre>";
-        fclose($file);
+
+        $apple = new Fruit();
+        $apple->setName("Maçã");
+        $apple->setColor("Vermelha");
+
+        $banana = new Fruit();
+        $banana->setName("Banana");
+        $banana->setColor("Amarela");
     ?>
 </body>
 </html>
