@@ -7,7 +7,7 @@ class Ponto {
     function __construct($x, $y) {
         $this->setX($x);
         $this->setY($y);
-        $this->numObjCriados++;
+        self::$numObjCriados++;
     }
 
     function setX($value) {
@@ -34,7 +34,31 @@ class Ponto {
         return '';
     }
 
-    function getNumObjCriados() {
-        return $this->numObjCriados;
+    static function contadorPontos() {
+        return self::$numObjCriados;
+    }
+    
+    public function distanciaPonto($outroPonto) {
+        $pontoUmElevado = pow($outroPonto->x -$this->x, 2);
+        $pontoDoisElevado = pow($outroPonto->y - $this->y, 2);
+        $distancia = sqrt($pontoUmElevado + $pontoDoisElevado);
+
+        return $distancia;
+    }
+    
+    public function distanciaCoordenadas($x2, $y2) {
+        $dx =  $x2 - $this->x;
+        $dy = $y2 - $this->y;
+        $distancia = sqrt($dx * $dx + $dy * $dy);
+
+        return $distancia;
+    }
+    
+    public static function distanciaEntrePontos($x1, $y1, $x2, $y2) {
+        $dx = $x2 - $x1;
+        $dy = $y2 - $y1;
+        $distancia = sqrt($dx * $dx + $dy * $dy);
+
+        return $distancia;
     }
 }
